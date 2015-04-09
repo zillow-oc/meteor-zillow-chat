@@ -1,0 +1,113 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="/favicon.png" />
+
+	<title>Zillow Meteor Chat</title>
+</head>
+
+<body class="pushable">
+	{{> navigation}}
+
+	{{> content}}
+</body>
+
+
+<template name="navigation">
+
+	<div id="menu" class="circular ui big icon fixed button">
+	  <i class="content icon"></i>
+	</div>
+
+	<div id="navigation" class="ui wide left vertical visible sidebar">
+
+		<section>
+
+			<div class="logo">
+				<img src ="/zillow.svg">
+			</div>
+
+			<nav>
+				{{#each getRooms}}
+
+					<div class="divider"></div>
+
+					<a href="#{{navigationLink this}}" {{isSelected this}}>
+						{{this}}
+					</a>
+				
+				{{/each}}
+			</nav>
+
+			{{> avatar getUser}}
+
+		</section>
+
+	</div>
+
+</template>
+
+
+<template name="content">
+
+
+	<div id="content" class="pusher">
+
+		<div id="messages">
+
+			<div class="ui divided list">
+				
+				{{#each getMessages}}
+
+					<div class="item {{isLocalUser}}">
+						<div class="content">
+							<div class="ui fluid grid">
+
+								<div class="one wide column">
+
+									{{> avatar user}}
+
+								</div>
+
+								<div class="thirteen wide column">
+
+									<p>{{{getMessage}}}</p>
+									<small>{{getTimestampLabel}}</small>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				{{/each}}
+
+			</div>
+
+		</div>
+
+		<div id="input">
+
+			<div class="ui big fluid action input">
+				<input type="text" placeholder="Type message" id="messageInput">
+				
+				<div class="ui big icon button">
+					<i class="comment icon"></i>
+  				</div>
+			</div>
+
+		</div>	
+
+	</div>
+
+</template>
+
+
+<template name="avatar">
+
+	<div class="avatar" style="background-color: {{color}}">
+		{{getName}}
+	</div>
+
+</template>
+

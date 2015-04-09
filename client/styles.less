@@ -1,0 +1,142 @@
+@color_navigation_background: rgba(0, 116, 228, 1);
+@color_navigation_link: rgba(255, 255, 255, 0.95);
+@color_navigation_linkhover: rgba(255, 255, 255, 0.35);
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400);
+
+@import "../lib/less/flexbox.import.less";
+
+* {
+	-webkit-user-select: none;
+	user-select: none;
+
+}
+
+body {
+	.flexbox;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-size:1.1rem;
+	background: rgba(255, 255, 255, 1);
+}
+
+.avatar(@size: 2.5rem) {
+	width:@size;
+	height:@size;
+	color: @color_navigation_link;
+	font-weight:200;
+	border-radius:@size;
+	font-size:calc(@size * 0.75);
+	line-height:calc(@size * 1.15);
+	text-align:center;
+	overflow: hidden;
+}
+
+.avatar {
+	.avatar();
+}
+
+#navigation {
+	.flexbox;
+	.flex-direction(column);
+	.justify-content(center);
+	background:@color_navigation_background;
+	text-align: center;
+}
+
+	#menu {
+		position:fixed;
+		top:0.25rem;
+		left:0.25rem;
+		z-index:103;
+		color:@color_navigation_link;
+		background:@color_navigation_background;
+	}
+
+	#navigation .logo {
+		width:100%;
+		margin-bottom:2rem;
+	}
+
+	#navigation section {
+		.flex(0 0 auto);
+		.align-self(center);
+	}
+
+	#navigation nav {
+		margin-bottom:3rem;
+	}
+
+		#navigation nav a {
+			display:block;
+			padding:0.5rem 1.25rem;
+			color: @color_navigation_link;
+			text-align: center;
+			text-transform: uppercase;
+			font-family: 'Roboto Condensed', sans-serif;
+			font-weight:300;
+			font-size:1.3rem;
+			position: relative;
+		}
+
+			#navigation nav a:hover {
+				background-color:@color_navigation_linkhover;
+			}
+
+			#navigation nav a[selected] {
+				outline:2px solid @color_navigation_link;
+			}
+
+		#navigation nav .divider:not(:first-child) {
+			margin:1rem 0;
+			opacity: 0.6;
+		}
+
+		#navigation .avatar {
+			.avatar(4rem);
+			margin:0 auto;
+		}
+
+
+#content {
+	.flex(1 1 auto);
+	.flexbox;
+	.flex-direction(column);
+	padding:2.5rem;
+	padding-right:380px;
+}
+
+	#content.closed {
+		padding-right:2.5rem;
+	}
+
+
+	#content #messages {
+		.flex(1 1 auto);
+		overflow:hidden;
+		overflow-y:scroll;
+		bottom:0;
+	}
+
+		#content #messages .item {
+			.flex(0 0 auto);
+			padding:1rem!important;
+		}
+
+		#content #messages .item.localUser {
+			background-color:rgba(0, 116, 228, 0.1);
+		}
+
+		#content #messages .item small {
+			opacity:0.35;
+		}
+
+	#content #input {
+		.flex(0 0 auto);
+		padding-top:1.5rem;
+	}
+
+img[emotion] {
+	width:1.25rem;
+	vertical-align: middle;
+}
