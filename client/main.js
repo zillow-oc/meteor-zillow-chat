@@ -175,6 +175,8 @@ Template.content.helpers({
 			}
 		}
 
+		toBottom();
+
 		return Handlebars._escape(this.message).replace(new RegExp(p.join("|"), "g"), function (match) {
 			
 			return typeof emoticons[match] != 'undefined' ? '<img emotion src="/emotions/'+emoticons[match]+'.svg"/>' : match;
