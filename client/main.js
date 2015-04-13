@@ -110,7 +110,7 @@ Template.navigation.events({
 
 var toBottom = function() {
 	$('#messages').stop().animate({
-  		scrollTop: $("#messages")[0].scrollHeight
+  		scrollTop: $("#messages")[0].scrollHeight || 0
 	}, 300);
 };
 
